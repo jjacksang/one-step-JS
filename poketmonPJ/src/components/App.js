@@ -19,7 +19,25 @@ export default function App($app) {
         $app,
         initialState: this.state.initialState,
     });
-    const poketmonDetail = new PoketmonDetail();
+    const poketmonDetail = new PoketmonDetail({
+        handleItemClick: async (id) => {
+            history.pushState(null, null, `/detail/${id}`),
+                this.setState({
+                    ...this.state,
+                    currentPage: `/detail/${id}`,
+                });
+        },
+        handleTypeClick: async (type) => {
+            history.pushState(null, null, `/${type}`);
+            const poketmonList = await getPoketmonList(type);
+            this.setState({
+                ...this.state,
+                poketmonList: poketmonList,
+                type: type,
+                currentPage: `/${type}`,
+            });
+        },
+    });
 
     this.setState = (newState) => {
         this.state = newState;
@@ -27,13 +45,13 @@ export default function App($app) {
     };
 
     const init = async () => {
-        const poketmons = await getPoketmonList(
+        const initialPoketmons = await getPoketmonList(
             this.state.type,
             this.state.searchWord
         );
         this.setState({
             ...this.state,
-            poketmons: poketmons,
+            poketmons: initialPoketmons,
         });
     };
 

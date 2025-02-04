@@ -1,6 +1,6 @@
 const API_URL = "https://pokemon-api-ecru-eta.vercel.app";
 
-export const getPoketmonList = async (startIdx, type, sortBy, searchWord) => {
+export const getPoketmonList = async (type, searchWord) => {
     try {
         let url = `${API_URL}`;
         if (type && type !== "All") {
