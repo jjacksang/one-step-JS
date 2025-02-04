@@ -1,20 +1,16 @@
 const API_URL = "https://pokemon-api-ecru-eta.vercel.app";
 
-export async function getItemList({ q }) {
-    const res = await fetch(`${API_URL}/?search=${q}`);
+export const getPoketmonList = async (startIdx, type, sortBy, searchWord) => {
     try {
-        if (res) {
-            const data = await res.json();
-            return data.data;
+        let url = `${API_URL}`;
+        if (type && type !== "All") {
+            url += `${type}`;
         }
-    } catch (error) {
-        console.log(error);
-    }
-}
+        if (searchWord) {
+            url += `?search=${searchWord}`;
+        }
 
-export async function getItemDetail(id) {
-    const res = await fetch(`${API_URL}/detail/${id}`);
-    try {
+        const res = await fetch(url);
         if (res) {
             let data = await res.json();
             return data.data;
@@ -22,4 +18,4 @@ export async function getItemDetail(id) {
     } catch (error) {
         console.log(error);
     }
-}
+};
