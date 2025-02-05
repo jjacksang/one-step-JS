@@ -1,3 +1,29 @@
+:root {
+    --default: #383838;
+    --water: #2892ff;
+    --fire: #ff612b;
+    --grass: #43bf24;
+    --ice: #43d8ff;
+    --flying: #95c9ff;
+    --poison: #994dcf;
+    --bug: #9fa423;
+    --fairy: #ffb1ff;
+    --electric: #ffdb01;
+    --normal: #999999;
+    --psychic: #ff637f;
+    --ground: #ac7939;
+    --fighting: #ffa202;
+    --ghost: #6e4570;
+    --rock: #bcb889;
+    --steel: #6baed3;
+    --dragon: #5462d6;
+
+    --small: 16px;
+    --medium: 18px;
+    --regular: 20px;
+    --large: 28px;
+}
+
 .poketmon-list {
     width: 100%;
     height: auto;

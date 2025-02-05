@@ -6,8 +6,15 @@ import PoketmonDetail from "./PoketmonDetail.js";
 import { getPoketmonList } from "./api.js";
 
 export default function App($app) {
+    const getSearchItem = () => {
+        if (window.location.search.includes("search=")) {
+            return window.location.search.split("search=")[1];
+        }
+        return "";
+    };
+
     this.state = {
-        searchWord: "",
+        searchWord: getSearchItem(),
         type: "",
         poketmons: [],
         currentPage: window.location.pathname,
@@ -18,8 +25,6 @@ export default function App($app) {
     const poketmonList = new PoketmonList({
         $app,
         initialState: this.state.initialState,
-    });
-    const poketmonDetail = new PoketmonDetail({
         handleItemClick: async (id) => {
             history.pushState(null, null, `/detail/${id}`),
                 this.setState({
@@ -33,11 +38,13 @@ export default function App($app) {
             this.setState({
                 ...this.state,
                 poketmonList: poketmonList,
+                searchWord: getSearchItem(),
                 type: type,
                 currentPage: `/${type}`,
             });
         },
     });
+    const poketmonDetail = new PoketmonDetail({});
 
     this.setState = (newState) => {
         this.state = newState;
