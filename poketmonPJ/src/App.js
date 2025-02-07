@@ -40,7 +40,7 @@ export default function App($app) {
 
         // 검색어 입력 시 이동
         handleSearchWord: async (searchWord) => {
-            history.pushState(null, null, `/?search=${this.state.searchWord}`);
+            history.pushState(null, null, `?search=${searchWord}`);
             const searchPoketmonList = await getPoketmonList(
                 this.state.type,
                 searchWord
