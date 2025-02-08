@@ -24,7 +24,7 @@ export default function PoketmonList({
                         <img src="${el.img}" alt="${el.name}"></img>
                     </div>
                     <div class="pokemon-info">
-                        <div class="index">No.${index}</div>
+                        <div class="index">No.${el.id}</div>
                         <div class="name">${el.name}</div>
                         <div class="type">${setPokemonType(el.type)}</div> 
                     </div>
@@ -54,5 +54,6 @@ export default function PoketmonList({
         this.state = newState;
         this.render();
     };
+
     this.render();
 }
