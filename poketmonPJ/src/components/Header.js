@@ -27,7 +27,7 @@ export default function Header({
             <div class="search">
                 <input type="text" placeholder="포켓몬을 검색하세요!" id="search" autocomplete="off" 
                 value=${searchWord}></input>
-                <button id="search-button"><img src="src/img/search.png" /></button>
+                <button id="search-button"><img src="/src/img/search.png" /></button>
             </div>`;
         }
         return temp;
